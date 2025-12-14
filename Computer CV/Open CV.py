@@ -1,5 +1,5 @@
 import cv2
-# print(cv2.__version__)
+
 image = cv2.imread("for project.jpg")
 
 cv2.namedWindow('Image', cv2.WINDOW_NORMAL)
