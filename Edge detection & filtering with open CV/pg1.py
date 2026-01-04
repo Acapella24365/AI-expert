@@ -71,4 +71,4 @@ def interactive_edge_detection(image_path):
         else:
             print("Invalid choice. Please select a number between 1 and 6.")
 
-interactive_edge_detection('example.jpg')
+interactive_edge_detection('new.image.jpg')
