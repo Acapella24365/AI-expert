@@ -66,4 +66,28 @@ while True:
                     volume.SetMasterVolumeLevel(vol, None)
                 except Exception as e:
                     print(f"Error adjusting volume: {e}")
-                    
+
+                vol_bar = np.interp(distance, [30, 300], [400, 150])
+                cv2.rectangle(img, (50, 150), (85, 400), (255, 0, 0), 2)
+                cv2.rectangle(img, (50, int(vol_bar)), (85, 400), (255, 0, 0), cv2.FILLED)
+                cv2.putText(img, f'Volume: {int(np.interp(distance, [30, 300], [0, 100]))}%', (40, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 3)
+
+            elif hand_label == "Left":
+                brightness = np.interp(distance, [30, 300], [0, 100])
+                try:
+                    sbc.set_brightness(brightness)
+                except Exception as e:
+                    print(f"Error adjusting brightness: {e}")
+
+                brightness_bar = np.interp(distance, [30, 300], [400, 150])
+                cv2.rectangle(img, (100, 150), (135, 400), (0, 255, 0), 2)
+                cv2.rectangle(img, (100, int(brightness_bar)), (135, 400), (0, 255, 0), cv2.FILLED)
+                cv2.putText(img, f'Brightess: {int(brightness)}%', (90, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+            
+    cv2.imshow("Gesture Volume and Brightess Controller", img)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
