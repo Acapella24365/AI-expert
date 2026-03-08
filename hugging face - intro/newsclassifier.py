@@ -37,17 +37,15 @@ def show(headline: str, preds: list):
         print(f"{i}. {p['label']:<11} {round(p['score']*100,1)}%[{bar(p['score'])}]")
     print("=" * 60)
 
-    def main():
+def main():
+    print("Welcome! Type a news headline and I'll guess the topic.")
+    print("Topics:", ", ".join(TOPICS))
+    print("Type 'exit' to stop.\n")
 
-        print("Welcome! Type a news headline and I'll guess the topic.")
-        print("Topics:", ", ".join(TOPICS))
-        print("Type 'exit' to stop.\n")
-
- 
     while True:
         headline = input("Headline: ").strip()
         if headline.lower() == "exit":
-            print("Bye! Keep coding ????")
+            print("Bye! Keep coding 🚀")
             break
         if not headline:
             print("Please type a headline (not empty).\n")
@@ -62,8 +60,6 @@ def show(headline: str, preds: list):
             print("\n⚠️ Oops! Something went wrong.")
             print("Reason:", e)
             print("Tip: Check HF_API_KEY + internet.\n")
-
-
 
 if __name__ == "__main__":
     main()
