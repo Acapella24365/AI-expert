@@ -7,7 +7,7 @@ init(autoreset=True)
 DEFAULT_MODEL = "google/pegasus-xsum"
 
 def build_api_url(model_name):
-    return f"https://router.huggingface.co/models/{model_name}"
+    return f"https://router.huggingface.co/hf-inference/models/{model_name}"
 
 def query(payload, model_name=DEFAULT_MODEL):
     """Sends a POST request to the Hugging Face API using the specified model."""
@@ -51,7 +51,9 @@ if __name__ == "__main__":
             model_choice = DEFAULT_MODEL
         
         print(Fore.YELLOW + "\nChoose your summarization style:")
-        print("1. Standard Summary (Quick & concise)")
+        print("\n1. Standard Summary (Quick & Concise)")
+
+        print("2. Enhanced Summary (Detailed & Enhanced)")
         style_choice = input("Enter 1 or 2: ").strip()
 
         if style_choice == "2":
