@@ -21,5 +21,3 @@ def detect_gesture(landmarks, handedness):
     thumb_ip = landmarks.landmark[mp_hands.HnadLandmark.THUMB_IP]
     if (handedness == "Right" and thumb_tip.x > thumb_ip.x) or (handedness == "Left" and thumb_tip.x < thumb_ip.x):
         fingers.append(1)
-
-        
