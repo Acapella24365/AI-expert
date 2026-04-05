@@ -65,4 +65,24 @@ def caption_single_image():
 
         try:
             d = r.json()
-            
+        except Exception:
+            last = "Non-JSON response recieved from the API."
+            continue
+
+        cap = (d.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+        if cap:
+            box("Image Caption Generated", [
+                f"Image : {image_source}",
+                "Caption:",
+                f"   {cap}",
+            ], "🎉")
+            return
+        last = "No caption found."
+
+    box("Caption Failed", [f"Image  : {image_source}", f"X error : {last or 'Unknown error'}"], "⚠️")
+
+def main():
+    caption_single_image()
+
+if __name__ == "__main__":
+    main()
