@@ -63,7 +63,7 @@ def transcribe(data, rate, width):
         print(f"❌ API Error: {e}")
 
 def plot_waveform(data, rate):
-    samples = np.frombuffer(data, dtype=np.init16)
+    samples = np.frombuffer(data, dtype=np.int16)
     time_axis = np.linspace(0, len(samples) / rate, len(samples))
     plt.figure(figsize=(10, 4))
     plt.plot(time_axis, samples, color='blue')
