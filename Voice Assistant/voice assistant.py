@@ -68,7 +68,7 @@ def main():
     original_text = speech_to_text()
 
     if original_text:
-        translated_text = translate_text(original_text, target_languge=target_language)
+        translated_text = translate_text(original_text, target_language=target_language)
         speak(translated_text, language="en")
         print("✔️ Translation spoken out !!")
 
