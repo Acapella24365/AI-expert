@@ -16,7 +16,7 @@ def speak(text, language="en"):
     engine.runAndWait()
 
 def speech_to_text():
-    recognizer = sr.Recognizer
+    recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         print("???? Please speak now in English...")
         audio = recognizer.listen(source)
